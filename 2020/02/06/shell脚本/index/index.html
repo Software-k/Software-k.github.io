@@ -120,7 +120,7 @@
 
 
 
-  <title>分类 | Start</title>
+  <title>shell脚本安装apche服务 | Start</title>
   
 
 
@@ -279,40 +279,183 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sec-io.top/2020/02/06/shell%E8%84%9A%E6%9C%AC/index/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xiao Jie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/boketouxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Start">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
-
-	<h1 class="post-title" itemprop="name headline">分类</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
+	
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                目前共计 1 个分类
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Centos-Redhat/">Centos/Redhat</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">shell脚本安装apche服务</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-06T19:03:27+08:00">2020-02-06</time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T19:12:23+08:00">2020-02-06</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Centos-Redhat/" itemprop="url" rel="index">
+                    <span itemprop="name">Centos/Redhat</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>shell脚本的使用过程，将下面代码复制到Centos或者Redhat服务器上赋予执行权限执行即可<br>chmod +x shell脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">echo "正在检测您的服务器剩余的安装包!!!"</span><br><span class="line">rpm -qa |grep httpd &amp;&gt;/dev/null</span><br><span class="line">if [ $? -eq 0 ];then</span><br><span class="line">	yum -y remove httpd* &amp;&gt;/dev/null</span><br><span class="line">	echo "清理剩余安装包完成!!!"</span><br><span class="line">else</span><br><span class="line">	echo "您的服务器没有剩余安装包!!!"</span><br><span class="line">fi</span><br><span class="line">menu () &#123;</span><br><span class="line">rpm -qa |grep httpd &amp;&gt;/dev/null</span><br><span class="line">if [ $? -eq 1 ];then</span><br><span class="line">		echo "目前没有安装网站服务器"</span><br><span class="line">	read -p  "是否安装网站服务器(yes|no):" yes</span><br><span class="line">	if [ $yes = yes ];then</span><br><span class="line">		yum -y install httpd &amp;&gt;/dev/null</span><br><span class="line">		echo "网站服务器安装成功!!!!"</span><br><span class="line">		read -p  "请输入网站配置文件(默认储存/etc/httpd/conf.d/):" config</span><br><span class="line">			touch /etc/httpd/conf.d/$config'.conf'</span><br><span class="line">			echo "您的网站配置文件设置为:/etc/httpd/conf.d/$config.conf"</span><br><span class="line">		read -p  "请输入网站域名或IP地址:" domain</span><br><span class="line">			echo "您的网站域名或IP为:$domain"</span><br><span class="line">		read -p  "请输入网站根目录(默认为/var/www/html):" root</span><br><span class="line">			mkdir $root &amp;&gt;/dev/null</span><br><span class="line">			echo "网站根目录已经设置为$root"</span><br><span class="line">			read -p "请输入网站首页(默认为index.html):" index</span><br><span class="line">			touch /$root/$index</span><br><span class="line">			read -p "请输入网站首页内容:" neir</span><br><span class="line">			echo "$neir" &gt;&gt; /$root/$index</span><br><span class="line">			while true</span><br><span class="line">			do</span><br><span class="line">				read -p "是否重新加载配置文件(yes|no)" no</span><br><span class="line">				if [ $no = yes ];then</span><br><span class="line">					systemctl restart httpd</span><br><span class="line">					echo "网站服务器重新加载成功!!"</span><br><span class="line">					break</span><br><span class="line">				else</span><br><span class="line">					echo "建议您重启加载配置"</span><br><span class="line">				fi</span><br><span class="line">					</span><br><span class="line">			done</span><br><span class="line">echo "====================================================="</span><br><span class="line">echo "您的网站配置文件是:/etc/httpd/conf.d/$config.conf"</span><br><span class="line">echo "您的服务器域名或IP是:"$domain</span><br><span class="line">echo "您的服务器根目录是:"$root</span><br><span class="line">echo "您的服务器首页是:"$index</span><br><span class="line">echo "您的服务器首页内容是:"$neir</span><br><span class="line">echo "写入配置文件成功!!!赶紧访问你的服务器吧！"</span><br><span class="line">cat &gt;&gt; /etc/httpd/conf.d/$config.conf &lt;&lt; OEF</span><br><span class="line">&lt;virtualhost *:80&gt;</span><br><span class="line">servername $domain</span><br><span class="line">documentroot $root</span><br><span class="line">directoryindex $index </span><br><span class="line">&lt;directory "$root"&gt; </span><br><span class="line">        require all granted</span><br><span class="line">&lt;/directory&gt; </span><br><span class="line">&lt;/virtualhost&gt;</span><br><span class="line">OEF</span><br><span class="line">echo "====================================================="</span><br><span class="line">	else</span><br><span class="line">		echo "已经取消安装网站服务器"</span><br><span class="line">	fi</span><br><span class="line">else</span><br><span class="line">	echo "网站服务器已安装"	</span><br><span class="line">fi</span><br><span class="line">&#125;</span><br><span class="line">menu</span><br></pre></td></tr></table></figure>
+
+
+
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/shell%E8%84%9A%E6%9C%AC/" rel="tag"># shell脚本</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/06/index/" rel="next" title="博客知乎">
+                <i class="fa fa-chevron-left"></i> 博客知乎
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 

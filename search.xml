@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>baidu_verify_zHcv7dFRVN</title>
-    <url>/2020/02/07/baidu_verify_zHcv7dFRVN/</url>
-    <content><![CDATA[zHcv7dFRVN]]></content>
-  </entry>
-  <entry>
     <title>Centos8(1)-配置本地yum源</title>
     <url>/2020/02/07/Centos&amp;redhat%E7%B3%BB%E5%88%97/Centos8(1)/</url>
     <content><![CDATA[<p>博主在昨天晚上进行了centos8的安装，在配置本地yum方法上一直失败，一直报元数据失败等。<br>在今天下午，我对Centos8的yum源进行了分析得到一下结果：</p>

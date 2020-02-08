@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Centos8(2)-网络配置</title>
-    <url>/2020/02/08/CentosORredhat/Centos8(2)%20/</url>
+    <url>/2020/02/08/shell/Centos8(2)%20/</url>
     <content><![CDATA[<p>今天我们就来聊聊Centos8的网络配置吧，当我兴致勃勃的打开Centos8，按照以前的Centos7的习惯更改了IP地址<br>然后进行重启的时候， 发现了一个错误</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# systemctl restart network</span><br><span class="line">Failed to restart network.service: Unit network.service not found.</span><br></pre></td></tr></table></figure>
 <p>这就告诉我们network.manager这个服务不存在了。说明了什么？<br>这就告诉我们以后这个服务在Centos8废除了，那么下面我来教大家怎么配置吧<br>目前学到就是有两种方法：<br>方法一：<br>通过ifdown/ifup的方式来进行关闭和重启</p>

@@ -122,7 +122,7 @@
 
 
 
-  <title>博客知乎 | Start</title>
+  <title>Centos8(1)-配置本地yum源 | Start</title>
   
 
 
@@ -293,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sec-io.top/2020/02/06/index/">
+    <link itemprop="mainEntityOfPage" href="https://sec-io.top/2020/02/07/Centos&redhat%E7%B3%BB%E5%88%97/index/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xiao Jie">
@@ -310,7 +310,7 @@
 	
         
         
-          <h1 class="post-title" itemprop="name headline">博客知乎</h1>
+          <h1 class="post-title" itemprop="name headline">Centos8(1)-配置本地yum源</h1>
         
 
         <div class="post-meta">
@@ -322,7 +322,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-06T12:48:48+08:00">2020-02-06</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-07T18:33:41+08:00">2020-02-07</time>
             
 
             
@@ -336,10 +336,32 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T19:14:46+08:00">2020-02-06</time>
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-07T18:34:48+08:00">2020-02-07</time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Centos-Redhat/" itemprop="url" rel="index">
+                    <span itemprop="name">Centos/Redhat</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -373,7 +395,11 @@
       
 
       
-        <p>本博主将把日常学习到的知识在该博客上进行分享！<br>请善待每一份资源，都来之不易，请尊重每一位博主<br>在原创文章中，未经博主允许，进行商用或者进行转载（未标明转载处）必究</p>
+        <p>博主在昨天晚上进行了centos8的安装，在配置本地yum方法上一直失败，一直报元数据失败等。<br>在今天下午，我对Centos8的yum源进行了分析得到一下结果：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# grep -v "#" /etc/yum.repos.d/CentOS-Media.repo          </span><br><span class="line"></span><br><span class="line">[c8-media-BaseOS]    //Centos的工具库</span><br><span class="line">name=CentOS-BaseOS-$releasever - Media    </span><br><span class="line">baseurl=file:///media/CentOS/BaseOS</span><br><span class="line">        file:///media/cdrom/BaseOS</span><br><span class="line">        file:///media/cdrecorder/BaseOS</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=0</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial</span><br><span class="line"></span><br><span class="line">[c8-media-AppStream]  //Centos的软件库</span><br><span class="line">name=CentOS-AppStream-$releasever - Media</span><br><span class="line">baseurl=file:///media/CentOS/AppStream</span><br><span class="line">        file:///media/cdrom/AppStream</span><br><span class="line">        file:///media/cdrecorder/AppStream</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=0</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial</span><br></pre></td></tr></table></figure>
+<p>这也符合了Centos8的最新安装的dnf的方式！下面我就来教大家怎么进行配置本地yum</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# rm -rf /etc/yum.repos.d/CentOS-[DBVAE]*    //删除DBVAE开头的repo文件</span><br><span class="line">[root@localhost ~]# vim /etc/yum.repos.d/CentOS-Media.repo      //编辑Centos-media.repo文件</span><br><span class="line">[c8-media-BaseOS]</span><br><span class="line">name=CentOS-BaseOS-$releasever - Media</span><br><span class="line">baseurl=file:<span class="comment">///mnt/cdrom/BaseOS    //这边的BaseOS这个目录不用创建，等等直接挂载到/mnt/cdrom即可</span></span><br><span class="line">gpgcheck=<span class="number">1</span></span><br><span class="line">enabled=<span class="number">1</span>   <span class="comment">//开启yum仓库（工具）</span></span><br><span class="line">gpgkey=file:<span class="comment">///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial</span></span><br><span class="line"></span><br><span class="line">[c8-media-AppStream]</span><br><span class="line">name=CentOS-AppStream-$releasever - Media</span><br><span class="line">baseurl=file:<span class="comment">///mnt/cdrom/AppStream     //这边跟上面一样</span></span><br><span class="line">gpgcheck=<span class="number">1</span></span><br><span class="line">enabled=<span class="number">1</span>   <span class="comment">//开启yum仓库（应用）</span></span><br><span class="line">gpgkey=file:<span class="comment">///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial</span></span><br><span class="line">保存退出</span><br><span class="line">[root@localhost ~]# mkdir /mnt/cdrom   //创建挂载目录</span><br><span class="line">[root@localhost ~]# mount /dev/sr0 /mnt/cdrom/  //执行挂载</span><br><span class="line">mount: /mnt/cdrom: WARNING: device write-<span class="keyword">protected</span>, mounted read-only.    这边是一个警告。没关系的</span><br><span class="line">[root@localhost ~]# cd /mnt/cdrom/</span><br><span class="line">[root@localhost cdrom]# ls   //我们会发现有AppStream和BaseOS目录。所以上面的我们就不用创建！</span><br><span class="line">AppStream  BaseOS  EFI  images  isolinux  media.repo  TRANS.TBL</span><br><span class="line">[root@localhost cdrom]# yum clean all  //清楚yum缓存</span><br><span class="line"><span class="number">20</span> 文件已删除</span><br><span class="line">[root@localhost cdrom]# yum repolist   //查看yum仓库，完成到这边已经ok了</span><br><span class="line">CentOS-BaseOS-<span class="number">8</span> - Media                                                       <span class="number">33</span> MB/s | <span class="number">2.2</span> MB     <span class="number">00</span>:<span class="number">00</span>    </span><br><span class="line">CentOS-AppStream-<span class="number">8</span> - Media                                                    <span class="number">21</span> MB/s | <span class="number">5.4</span> MB     <span class="number">00</span>:<span class="number">00</span>    </span><br><span class="line">上次元数据过期检查：<span class="number">0</span>:<span class="number">00</span>:<span class="number">01</span> 前，执行于 <span class="number">2020</span>年<span class="number">02</span>月<span class="number">07</span>日 星期五 <span class="number">03</span>时<span class="number">15</span>分<span class="number">52</span>秒。</span><br><span class="line">仓库标识                                        仓库名称                                                状态</span><br><span class="line">c8-media-AppStream                              CentOS-AppStream-<span class="number">8</span> - Media                              <span class="number">4</span>,<span class="number">755</span></span><br><span class="line">c8-media-BaseOS                                 CentOS-BaseOS-<span class="number">8</span> - Media                                 <span class="number">1</span>,<span class="number">65</span></span><br><span class="line">[root@localhost cdrom]# vim /etc/fstab   //进行开机自动挂载光盘</span><br><span class="line">/dev/sr0        /mnt/cdrom      iso9600 defaults <span class="number">0</span> <span class="number">0</span>   <span class="comment">//添加此行即可</span></span><br></pre></td></tr></table></figure>
+<p>上面就是本地yum搭建的过程。但是我在这边提醒一下大家，如果有网络就尽量使用网络上的yum仓库，这样也会省下一些<br>配置yum仓库的时间，同时也会实时更新最新版本</p>
 
       
     </div>
@@ -389,6 +415,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Centos8/" rel="tag"># Centos8</a>
+          
+            <a href="/tags/%E5%8E%9F%E5%88%9B/" rel="tag"># 原创</a>
+          
+        </div>
+      
 
       
       
@@ -398,15 +432,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2020/02/07/Centos&redhat%E7%B3%BB%E5%88%97/Centos8(1)/" rel="next" title="Centos8(1)-配置本地yum源">
+                <i class="fa fa-chevron-left"></i> Centos8(1)-配置本地yum源
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/06/shell%E8%84%9A%E6%9C%AC/index/" rel="prev" title="shell脚本安装apche服务">
-                shell脚本安装apche服务 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
